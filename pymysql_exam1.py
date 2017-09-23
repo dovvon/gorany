@@ -5,9 +5,9 @@ import datetime
 import random
 import pymysql
 
-conn = pymysql.connect(host="localhost", user="root", passwd="1111", db="mysql", charset="utf8")
-cur = conn.cursor()
-cur.execute("USE scraping")
+#conn = pymysql.connect(host="localhost", user="root", passwd="1111", db="mysql", charset="utf8")
+#cur = conn.cursor()
+#cur.execute("USE scraping")
 
 random.seed(datetime.datetime.now())
 
@@ -20,8 +20,11 @@ def getLinks(articleUrl):
     bsObj = BeautifulSoup(html, "html.parser")
     title = bsObj.find("h1").get_text()
     content = bsObj.find("div", {"id":"mw-content-text"}).find("p").get_text()
-    store(title, content)
+   # store(title, content)
+    print(title+" : "+content)
+
     return bsObj.find("div",{"id":"bodyContent"}).findAll("a", href=re.compile("^(/wiki/)((?!:).)*$"))
+
 
 links = getLinks("/wiki/Python")
 try:
