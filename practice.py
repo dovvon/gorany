@@ -11,7 +11,7 @@ def recurFact(n):
 
 print(fact(1))
 print(fact(5))
-print(fact(3))
+print(fact(10))
 
 print(recurFact(1))
 print(recurFact(5))
